@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For each</title>
+    <style>
+        body{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 18px;
+        }
+        .app-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 800px;
+            
+        }
+        #app {
+            min-width: 250px;
+            max-width: 380px;
+            padding: 30px;
+            border: 2px solid rgb(240, 235, 230);
+            border-radius: 10px;
+            background-color: rgb(245, 235, 245);
+        }
+        #app li{
+            margin-top: 20px ;
+            list-style: none;
+        }
+        #app span {
+            color: rgb(30, 30, 30);
+            font-weight: bolder;
+        }
+        #app p {
+            padding-left: 8px;
+            color: rgb(90, 90, 90);
+        }
+    </style>
+</head>
+<body>
+    <section class="app-container">
+        <div id="app"></div>
+    </section>
+    <script>
+        const items = [
+            {
+                task: 'Actividad 1 : <br> Leyendo HTML desde JavaScript' , done:true , detail: 'Utiliza los métodos .document.getElementById(), .document.getElementByClass() y .document.querySelector().',
+            },
+            {
+                task: 'Actividad 2 : <br> Escribiendo HTML desde JavaScript' , done:true , detail: 'Utiliza los métodos .appendChild() y modifica atributos desde .getAtributte y setAtrributte.',
+            },
+            {
+                task: 'Actividad 3 : <br> Añadir Eventos' , done:false , detail: 'Utiliza addEventListener.',
+            },
+        ];
+        const app = document.getElementById('app');
+        items.forEach(item => {
+            app.innerHTML += `<li class = 'item'>  <input type= 'checkbox' ${item.done ? 'checked' : ''}/>  <span>${item.task}</span>  - <p>${item.detail} </p></li>`;
+        })
+    </script>    
+</body>
+</html>
