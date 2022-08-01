@@ -25,7 +25,17 @@
             justify-content: center;
         }
         
-        .bill--individual{
+        .bill-delivered{
+            margin: 40px 0;
+            padding: 20px;
+            min-width: 220px;
+            max-width: 480px;
+            list-style: none;
+            background-color: rgb(208, 247, 238);
+            border-radius: 20px;
+        }
+
+        .bill-delivered--not{
             margin: 40px 0;
             padding: 20px;
             min-width: 220px;
@@ -35,14 +45,17 @@
             border-radius: 20px;
         }
 
-        .bill--individual .titulo{
+        .bill-delivered .titulo, 
+        .bill-delivered--not .titulo {
             font-weight: 600;
         }
-        .bill--individual .numeros{
+        .bill-delivered .numeros,
+        .bill-delivered--not .numeros {
             font-weight: 600;
             font-size: 20px;
         }
-        .bill--individual .impuestos{
+        .bill-delivered .impuestos, 
+        .bill-delivered--not .impuestos {
             font-weight: 200;
         }
             
@@ -53,9 +66,9 @@
     <main>
         <section>
             <div class="bill-container">
-                <ul id="bill">
-
+                <ul id="deliveredBill">
                 </ul>
+                <ul id="not-deliveredBill"></ul>
             </div>
         </section>
     </main>

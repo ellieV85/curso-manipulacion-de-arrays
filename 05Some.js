@@ -12,7 +12,7 @@ const orders=[
     {
         customerName:"Santiago",
         total:180,
-        delivered:false,
+        delivered:true,
     },
     {
         customerName:"Valentina",
@@ -21,24 +21,39 @@ const orders=[
     },
 ];
 
-const bill = document.getElementById('bill');
+const deliveredBill = document.getElementById('deliveredBill');
+const notDeliveredBill = document.getElementById('not-deliveredBill')
 
 const delivered = orders.some(item => item.delivered ? '' : 'false');
+
 if (!delivered) {
-    bill.innerHTML += `<p>Todas las ordenes han sido entregadas</p>`
+    const deliveredNow = orders.filter (item => item.delivered ? 'true': '')
+    deliveredNow.forEach(order => {
+        deliveredBill.innerHTML += 
+        `<p>Esta Ordén ha sido entregada.</p>
+
+        <li class = 'bill-delivered'> 
+        <p class='titulo'> Recibo de compra para ${order.customerName}, ojalá disfrutes tu árticulo. </p>
+        <input id= 'delivered' type= 'checkbox' ${order.delivered ? 'checked' : ''}/> <span> Tu orden fué entregada con éxito.</span>
+        <p> El costo de tu compra es de: <span class='numeros'>$${order.total}</span></p>
+        </li>`
+    });
+    
 }else{
     const notDelivered = orders.filter (item => item.delivered ? '' : 'false');
 
     notDelivered.forEach(order => {
-        bill.innerHTML += `<li class = 'bill--individual'> 
+        notDeliveredBill.innerHTML += 
+        `<p>Esta Ordén no ha sido entregada aún.</p>
+        <li class = 'bill-delivered--not'> 
         <p class='titulo'> Recibo de compra para ${order.customerName}, ojalá disfrutes tu árticulo. </p>
         <input id= 'delivered' type= 'checkbox' ${order.delivered ? 'checked' : ''}/> <span> Tu orden fué entregada con éxito.</span>
-                                <p> El costo de tu compra es de: <span class='numeros'>$${order.total}</span> </p>
-                                
-                            </li>`
+        <p> El costo de tu compra es de: <span class='numeros'>$${order.total}</span></p>
+        </li>`
     });
-    addEventListener()
 }
+
+addEventListener()
 
 
 
