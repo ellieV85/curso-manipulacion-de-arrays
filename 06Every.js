@@ -2,7 +2,7 @@ const orders=[
     {
         customerName:"Nicolas",
         total:60,
-        delivered:false,
+        delivered:true,
     },
     {
         customerName:"Zulema",
@@ -17,28 +17,38 @@ const orders=[
     {
         customerName:"Valentina",
         total:240,
-        delivered:false,
+        delivered:true,
     },
 ];
 
+const deliveredBill = document.getElementById('deliveredBill');
 const notDeliveredBill = document.getElementById('not-deliveredBill');
+
 const deliveredText = document.getElementById('deliveredText');
 const notDeliveredText = document.getElementById('not-deliveredText');
 
-const delivered = orders.some(item => item.delivered ? '' : 'false');
+const delivered = orders.every(item => item.delivered);
 
 if (!delivered) {
-
-    deliveredText.innerHTML = `<p> Todas las ordenes han sido entregadas</p>`;
-    
-}else{
     const notDelivered = orders.filter (item => item.delivered ? '' : 'false');
-    
-    notDeliveredText.innerHTML = `<p> Quedan ordenes sin entregar</p>`;
+
+    notDeliveredText.innerHTML = `<p> Ninguna Ordén no ha sido entregada aún.</p>`;
+
     notDelivered.forEach(order => {
         notDeliveredBill.innerHTML += 
         `<li class = 'bill-delivered--not'> 
-        <p>Esta Ordén no ha sido entregada aún.</p>
+        <p class='titulo'> Recibo de compra para ${order.customerName}, ojalá disfrutes tu árticulo. </p>
+        <input id= 'delivered' type= 'checkbox' ${order.delivered ? 'checked' : ''}/> <span> Tu orden fué entregada con éxito.</span>
+        <p> El costo de tu compra es de: <span class='numeros'>$${order.total}</span></p>
+        </li>`
+    });
+}else {
+    const deliveredNow = orders.filter (item => item.delivered ? 'true': '')
+    
+    deliveredText.innerHTML = `<p>Todas las ordenes han sido entregadas.</p>`;
+    deliveredNow.forEach(order => {
+        deliveredBill.innerHTML += 
+        `<li class = 'bill-delivered'> 
         <p class='titulo'> Recibo de compra para ${order.customerName}, ojalá disfrutes tu árticulo. </p>
         <input id= 'delivered' type= 'checkbox' ${order.delivered ? 'checked' : ''}/> <span> Tu orden fué entregada con éxito.</span>
         <p> El costo de tu compra es de: <span class='numeros'>$${order.total}</span></p>
@@ -46,12 +56,12 @@ if (!delivered) {
     });
 }
 
-// addEventListener()
+
 
 
 
 // Ejercicio con librerias
-/* const dates = [
+const dates = [
     {
       startDate: new Date(2021, 1, 1, 10),
       endDate: new Date(2021, 1, 1, 11),
@@ -83,4 +93,4 @@ const isOverLap = (newDate) => {
     })
 }
 
-console.log( 'No puedes hacer esta cita',isOverLap(newAppointmet)); */
+console.log( 'No puedes hacer esta cita',isOverLap(newAppointmet));
