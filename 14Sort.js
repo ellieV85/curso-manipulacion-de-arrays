@@ -44,3 +44,5 @@ const orders = [
 
 orders.sort((a,b) => a.total - b.total );
 console.log(orders);
+
+

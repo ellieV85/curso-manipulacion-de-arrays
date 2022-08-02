@@ -43,10 +43,9 @@ finalTotal.forEach(order => {
     bill.innerHTML += `<li class = 'bill--individual'> 
     <p class='titulo'> Recibo de compra para ${order.customerName}, ojalá disfrutes tu árticulo. </p>
     <input type= 'checkbox' ${order.delivered ? 'checked' : ''}/> <span> Tu orden fué entregada con éxito.</span>
-                            <p> El costo de tu compra es de: <span class='numeros'>$${order.total}</span> </p>
-                            <p class='impuestos'> Impuestos del 19% $${order.tax}</p>
-                            <p> Tu total a pagar es de: <span class='numeros'>$${order.pagar}</span> </p>
-                        </li>`
+    <p> El costo de tu compra es de: <span class='numeros'>$${order.total}</span> </p>
+    <p class='impuestos'> Impuestos del 19% $${order.tax}</p>
+    <p> Tu total a pagar es de: <span class='numeros'>$${order.pagar}</span> </p></li>`
 });
 
 

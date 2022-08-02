@@ -22,10 +22,12 @@ const orders=[
 ];
 
 const notDeliveredBill = document.getElementById('not-deliveredBill');
+const deliveredBill = document.getElementById('deliveredBill');
+
 const deliveredText = document.getElementById('deliveredText');
 const notDeliveredText = document.getElementById('not-deliveredText');
 
-const delivered = orders.some(item => item.delivered ? '' : 'false');
+const delivered = orders.filter(item => item.delivered ? 'true' : '');
 
 if (!delivered) {
 
